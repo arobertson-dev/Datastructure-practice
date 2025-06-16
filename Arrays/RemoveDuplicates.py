@@ -44,4 +44,19 @@ Constraints:
 1 <= nums.length <= 3 * 104
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
+
 """
+#this is a solution which takes two pointers i and j, i keeps track of the last unique eleements index and j 
+#itterates through the array, if the current element is not equal to the last unique element, we increment i and set nums[i] to nums[j]
+
+from typing import List
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:  
+        if not nums:
+            return 0
+        i = 0
+        for j in range(1, len(nums)):
+            if nums[j] != nums[i]:
+                i += 1
+                nums[i] = nums[j]
+        return i + 1
