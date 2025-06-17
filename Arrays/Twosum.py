@@ -42,9 +42,31 @@ from typing import List
 
 #this solution uses a nested loop to check every pair of numbers in the list and see if they add up to the target or not, if they do
 #it returns the indices of those two numbers
+
+
+# O(n^2) time complexity
+
+""" 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]: 
         for i in range(len(nums)):
             for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
+
+                    
+""" 
+# O(n) time complexity
+ 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        indexMap = {}
+        for i in range(len(nums)):           
+            targetIndex = target - nums[i]
+            if targetIndex in indexMap:                                              
+                return [indexMap[targetIndex], i]
+            indexMap[nums[i]] = i
+            
+            
+## if the targetIndex is in the map, return the target and its value, if not add the current value and index to the map
+
